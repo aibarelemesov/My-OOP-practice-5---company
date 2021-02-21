@@ -1,0 +1,69 @@
+package com.company;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        SEO Aibar = new SEO("Aibar", "Yelemessov", "Doctorate");
+        Manager Alozis = new Manager("Alozis","Askhat","Master");
+        Foreman Murad = new Foreman("Murad","Tangiev","Bachelor");
+        Specialist Damir = new Specialist("Damir","Akbarov","Bachelor");
+
+        Aibar.setSalary();
+        Alozis.setSalary();
+        Murad.setSalary();
+        Damir.setSalary();
+
+        ArrayList<Worker> workers = new ArrayList<>();
+        workers.add(Aibar);
+        workers.add(Alozis);
+        workers.add(Murad);
+        workers.add(Damir);
+
+        for (Worker man : workers){
+            man.work();
+        }
+
+        DB query = new DB();
+
+        int i = 1;
+        for (Worker man : workers){
+            query.insert(i, man.getName(), man.getSurname(), man.getPosition(), man.getEducation(), man.getSalary());// here i used man.getName and etc. instead of man.name and etc., because man.name returns nothing
+            i++;
+        }
+
+        while (true){
+            System.out.println(" ");
+            System.out.println("1. Show all employee");
+            System.out.println("2. Show hierarchy");
+            System.out.println("3. Show the total cost of the company for the month");
+            System.out.println("4. END");
+            int choice = scan.nextInt();
+            if (choice == 1){
+                query.view(1);
+                query.view(2);
+                query.view(3);
+                query.view(4);
+            } else if (choice == 2){
+                System.out.println("SEO->Manager->Foreman->Specialist");
+            } else if (choice == 3){
+                int Total = 0;
+                for (Worker man : workers){
+                    Total += man.getSalary();
+                }
+                System.out.println(Total + "$");
+            } else {
+                query.delete(1);
+                query.delete(2);
+                query.delete(3);
+                query.delete(4);
+                break;
+            }
+        }
+
+
+    }
+}

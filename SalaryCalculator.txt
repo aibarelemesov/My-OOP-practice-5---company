@@ -1,0 +1,26 @@
+package com.company;
+
+public class SalaryCalculator {
+
+    public int calculateSalary(String position, String education) {
+        int salary = 0;
+        if (position == "SEO") {
+            salary += 130000;
+        } else if (position == "Manager") {
+            salary += 95000;
+        } else if (position == "Foreman") {
+            salary += 80000;
+        } else if (position == "Specialist") {
+            salary += 65000;
+        }
+        if (education == "Bachelor") {
+            salary += 10000;
+        } else if (education == "Master") {
+            salary += 20000;
+        } else if (education == "Doctorate") {
+            salary += 30000;
+        }
+        return salary;
+    }
+
+}

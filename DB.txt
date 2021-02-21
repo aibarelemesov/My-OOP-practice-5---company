@@ -1,0 +1,48 @@
+package com.company;
+import java.sql.*;
+import java.util.Scanner;
+
+public class DB {
+    Scanner scan = new Scanner(System.in);
+    String connectionUrl="jdbc:postgresql://localhost:5432/ITCompany";
+    Connection connection=null;
+    ResultSet  resultSet=null;
+    Statement statement=null;
+
+    public void insert(int id, String name, String surname, String position, String education, int salary) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(connectionUrl, "postgres", "12345");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("insert into employee values (" + id +",\'" + name + "\', \'" + surname + "\', \'" + position + "\', \'" + education + "\'," + salary + ")");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    public void view(int id) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(connectionUrl, "postgres", "12345");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from employee where id = " + id);
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt("id") + " " + resultSet.getString("name") + " " + resultSet.getString("surname") + " " + resultSet.getString("position") + " " + resultSet.getString("education") + " " + resultSet.getInt("salary"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    public void delete(int id){
+        try {
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(connectionUrl, "postgres", "12345");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("DELETE FROM employee WHERE id = " + id +";");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+}

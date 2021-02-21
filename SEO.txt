@@ -1,0 +1,72 @@
+package com.company;
+
+public class SEO extends Worker{
+    public String name = new String();
+    public String surname = new String();
+    public String position = "SEO";
+    public String education = new String();
+    private int salary;
+
+    SEO (String name, String surname, String education) {
+        this.name = name;
+        this.surname = surname;
+        this.education = education;
+    }
+
+    SEO (){};
+
+    public void createStrategicPlan(){}
+
+    public void developProject(){}
+
+    public void presentResults(){};
+
+    public void makeTheFinalDecision(){}
+
+    public void work(){
+        createStrategicPlan();
+        developProject();
+        presentResults();
+        makeTheFinalDecision();
+    };
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public void setSalary() {
+        this.salary = calculateSalary(this.position,this.education);
+    }
+}

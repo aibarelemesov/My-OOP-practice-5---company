@@ -1,0 +1,69 @@
+package com.company;
+
+public class Manager extends Worker{
+    public String name = new String();
+    public String surname = new String();
+    public String position = "Manager";
+    public String education = new String();
+    private int salary;
+
+    Manager (String name, String surname, String education) {
+        this.name = name;
+        this.surname = surname;
+        this.education = education;
+    }
+
+    Manager (){};
+
+    public void organizeWorkflow(){}
+
+    public void recruitStaff(){}
+
+    public void controleProcess(){};
+
+    public void work(){
+        organizeWorkflow();
+        recruitStaff();
+        controleProcess();
+    };
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public void setSalary() {
+        this.salary = calculateSalary(this.position,this.education);
+    }
+}
